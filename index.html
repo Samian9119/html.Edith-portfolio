@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edith Ibare - Professional Virtual Assistant & Writer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #80A1BA;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: black;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        .profile-image-container {
+            flex: 0 0 300px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .profile-image-placeholder {
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .profile-header .title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+            background: whitesmoke;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section-dark {
+            background: var(--primary);
+            color: whitesmoke;
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .section-dark h2 {
+            color: white;
+            border-bottom-color: var(--accent);
+        }
+
+        /* Grid Layouts */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Card Styles */
+        .service-card, .skill-category, .tool-category {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .service-card h3, .skill-category h3, .tool-category h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .tool-category {
+            border-left-color: var(--accent);
+        }
+
+        /* Experience Timeline */
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 3px solid var(--secondary);
+            position: relative;
+        }
+
+        .experience-item:before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 0;
+            width: 13px;
+            height: 13px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+
+        .job-title {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .company {
+            color: var(--secondary);
+            font-style: italic;
+        }
+
+        /* Project Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .testimonial-card:before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--secondary);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+        }
+
+        .cta-section h2 {
+            color: white;
+            border-bottom: none;
+        }
+
+        img {
+            height: 300px;
+            width: 600px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #c0392b;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-image-container {
+                order: -1;
+            }
+            
+            .profile-header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            section {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="profile-text">
+                    <div class="profile-header">
+                        <h1>EDITH IBARE</h1>
+                        <div class="title">Professional Virtual Assistant & Content Writer</div>
+                        <p class="tagline">Reliable | Detail-Oriented | Creative & Analytical</p>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <strong>Email:</strong> eddyibare@gmail.com
+                            </div>
+                            <div class="contact-item">
+                                <strong>Phone:</strong> +254743687545
+                            </div>
+                            <div class="contact-item">
+                                <strong>Location:</strong> Kerugoya, Kenya
+                            </div>
+                            <div class="contact-item">
+                                <strong>Availability:</strong> Remote | Global
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-image-container">
+                    <!-- IMAGE PLACEHOLDER - REPLACE THE SRC WITH YOUR IMAGE PATH -->
+                    <div class="profile-image">
+                        <!-- Replace the entire div below with your image tag -->
+                        <!-- 
+                        <img src="your-image.jpg" alt="Edith Ibare">
+                        -->
+                        <div class="profile-image-placeholder">
+                            <img src="./Image/WhatsApp Image 2025-11-22 at 06.18.39_27ad9830.jpg"/>
+            
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Professional Summary -->
+        <section id="summary">
+            <h2>Professional Summary</h2>
+            <p>Resourceful and detail-driven Bachelor of Commerce (Accounting) student with practical experience in finance
+administration, virtual support, and client coordination. Formerly served at Jitax Consulting, supporting accounts
+payable/receivable, invoice management, and financial data entry. Certified Virtual Assistant (ALX) with proven ability to
+manage calendars, organize documents, handle CRM systems, and streamline workflows. Known for delivering accurate
+results, excellent communication, and consistent task execution in both in-person and remote environments.</p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section-dark">
+            <h2>Core Competencies & Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Virtual Assistance & Administrative Support</h3>
+                    <ul>
+                        <li>Email & Calendar Management</li>
+                        <li>Customer Service (Email & Chat Support)</li>
+                        <li>Data Entry & Research</li>
+                        <li>Project & Task Coordination</li>
+                        <li>File & Document Management</li>
+                        <li>E-commerce & Order Processing</li>
+                        <li>Personal Assistance</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Content Creation & Writing</h3>
+                    <ul>
+                        <li>Content Writing & Copywriting</li>
+                        <li>Blog Posts & Articles</li>
+                        <li>SEO Optimization</li>
+                        <li>Editing & Proofreading</li>
+                        <li>Social Media Content & Strategy</li>
+                        <li>Brand Storytelling & Messaging</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Financial Administration</h3>
+                    <ul>
+                        <li>Invoice Processing (AP/AR)</li>
+                        <li>Account Reconciliation</li>
+                        <li>Financial Data Entry & Reporting</li>
+                        <li>Basic Bookkeeping</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills & Tools Section -->
+        <section id="skills">
+            <h2>Technical Skills & Tools</h2>
+            <div class="tools-grid">
+                <div class="tool-category">
+                    <h3>Productivity Suite</h3>
+                    <p>Microsoft Office (Expert), Google Workspace</p>
+                </div>
+                <div class="tool-category">
+                    <h3>Project Management</h3>
+                    <p>Asana, Trello, ClickUp</p>
+                </div>
+                <div class="tool-category">
+                    <h3>Communication</h3>
+                    <p>Slack, Zoom</p>
+                </div>
+                <div class="tool-category">
+                    <h3>File Management</h3>
+                    <p>Dropbox, OneDrive, Google Drive</p>
+                </div>
+                <div class="tool-category">
+                    <h3>Design & Social Media</h3>
+                    <p>Canva, Photoshop, CapCut, Hootsuite, Buffer, Meta Business Suite</p>
+                </div>
+                <div class="tool-category">
+                    <h3>Accounting & CRM</h3>
+                    <p>QuickBooks, Wave, CRM Platforms</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            <div class="experience-item">
+                <div class="job-title">Administrative Assistant</div>
+                <div class="company">Jitax Consulting Company – Kerugoya, Kenya | Jan 2023 – Dec 2024</div>
+                <ul>
+                    <li>Managed invoice processing and AP/AR entries, maintaining over 150 transactions monthly</li>
+                    <li>Supported account reconciliation and prepared financial summaries, reducing overdue receivables by 15% through diligent follow-ups</li>
+                    <li>Handled daily data entry using Excel and QuickBooks, enhancing the reliability of financial reports</li>
+                    <li>Provided comprehensive administrative support, including scheduling, email management, and maintaining organized digital records</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <div class="job-title">Freelance Virtual Assistant & Writer</div>
+                <div class="company">Remote | Jun 2022 – Sept 2024</div>
+                <ul>
+                    <li>Executed outbound prospecting and appointment setting for SMEs, achieving a 70% client meeting rate</li>
+                    <li>Managed client calendars across different time zones and maintained a 99% accuracy rate in CRM data entry</li>
+                    <li>Developed high-quality blog posts, articles, and product descriptions for clients in tech, lifestyle, and finance</li>
+                    <li>Wrote and edited 50+ SEO-optimized pieces, increasing website traffic by 30% for key clients and boosting sales for an e-commerce brand by 15%</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Key Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Blog Series: Sustainable Living Made Simple</h3>
+                    <p><strong>GreenLife Blog</strong></p>
+                    <ul>
+                        <li>Researched and wrote a 10-part blog series on practical sustainability</li>
+                        <li>Implemented SEO strategies, resulting in a 25% increase in organic traffic to the blog</li>
+                    </ul>
+                    <a href="http://www.greenlifeblog.com/sustainable-living"> Link</a>
+                </div>
+                <div class="project-card">
+                    <h3>E-commerce Product Descriptions for EcoWear</h3>
+                    <ul>
+                        <li>Created compelling, on-brand product descriptions for an eco-friendly clothing line</li>
+                        <li>The project contributed directly to a 15% increase in the brand's online sales</li>
+                    </ul>
+                    <a href="http://www.ecowear.com/collections"> Link </a>
+                </div>
+                <div class="project-card">
+                    <h3>Short Story Publication: "The Last Light"</h3>
+                    <p><strong>Literary Horizons Magazine</strong></p>
+                    <ul>
+                        <li>Authored a short story published in Literary Horizons, an online literary magazine</li>
+                        <li>Received positive reader and editorial feedback</li>
+                    </ul>
+                    <a href="http://www.literaryhorizons.com/the-last-light"> Link </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certifications -->
+        <section id="education">
+            <h2>Education & Certifications</h2>
+            <div class="experience-item">
+                <div class="job-title">Bachelor of Commerce (Accounting)</div>
+                <div class="company">Kirinyaga University | 2021 – 2025</div>
+            </div>
+            <div class="experience-item">
+                <div class="job-title">Certified Virtual Assistant</div>
+                <div class="company">ALX | Completed Sept 2024</div>
+                <p>8-week intensive programme in Virtual Assistance Skills in the Digital Age</p>
+                <img src="./Image/WhatsApp Image 2025-11-19 at 15.08.29_e3405f59.jpg"/>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials">
+            <h2>Client Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"Edith is an absolute lifesaver! Her organizational skills and attention to detail have made a huge difference in my business operations."</p>
+                    <p><strong>— John Smith</strong></p>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Reliable, efficient, and always professional—Edith has been an incredible asset to my team!"</p>
+                    <p><strong>— Emily Johnson</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section id="contact" class="cta-section">
+            <h2>Let's Work Together!</h2>
+            <p>Are you looking for a dependable and skilled professional to optimize your business operations and elevate your content? I am passionate about helping clients achieve their goals through meticulous organization and creative communication.</p>
+            <a href="mailto:eddyibare@gmail.com" class="cta-button">Get In Touch</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Edith Ibare. All rights reserved.</p>
+            <p>Email: eddyibare@gmail.com | LinkedIn: linkedin.com/in/eddy-ibare</p>
+        </div>
+    </footer>
+</body>
+</html>
